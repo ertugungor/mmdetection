@@ -10,6 +10,7 @@ from mmdet.models.builder import HEADS, build_loss
 from mmdet.models.losses import accuracy
 from mmdet.models.utils import build_linear_layer
 
+from .train_shift import SHIFT
 
 @HEADS.register_module()
 class BBoxHead(BaseModule):
@@ -352,6 +353,11 @@ class BBoxHead(BaseModule):
         else:
             scores = F.softmax(
                 cls_score, dim=-1) if cls_score is not None else None
+
+        shift = torch.Tensor(SHIFT).to(scores.device)
+        scores += shift
+        scores = torch.clamp(scores, min=0.0, max=1.0)
+
         # bbox_pred would be None in some detector when with_reg is False,
         # e.g. Grid R-CNN.
         if bbox_pred is not None:

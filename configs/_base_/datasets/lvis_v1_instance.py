@@ -2,6 +2,7 @@
 _base_ = 'coco_instance.py'
 dataset_type = 'LVISV1Dataset'
 data_root = 'data/lvis_v1/'
+data_root = '/workspace/data/lvis_v1/'
 data = dict(
     samples_per_gpu=2,
     workers_per_gpu=2,
@@ -20,5 +21,6 @@ data = dict(
     test=dict(
         type=dataset_type,
         ann_file=data_root + 'annotations/lvis_v1_val.json',
+        # ann_file=data_root + 'annotations/lvis_v1_train.json',
         img_prefix=data_root))
 evaluation = dict(metric=['bbox', 'segm'])
