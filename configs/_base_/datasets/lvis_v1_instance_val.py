@@ -21,6 +21,5 @@ data = dict(
     test=dict(
         type=dataset_type,
         ann_file=data_root + 'annotations/lvis_v1_val.json',
-        # ann_file=data_root + 'annotations/lvis_v1_train.json',
         img_prefix=data_root))
 evaluation = dict(metric=['bbox', 'segm'])
