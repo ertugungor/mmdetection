@@ -7,7 +7,6 @@ model = dict(
     roi_head=dict(
         bbox_head=dict(num_classes=1203), mask_head=dict(num_classes=1203)),
     test_cfg=dict(
-    test_cfg=dict(
         rcnn=dict(
             score_thr=0.0001,
             # LVIS allows up to 300
