@@ -10,7 +10,7 @@ model = dict(
         rcnn=dict(
             score_thr=0.0001,
             # LVIS allows up to 300
-            max_per_img=300)))
+            max_per_img=500)))
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 train_pipeline = [
